@@ -1,0 +1,23 @@
+---
+- name: rolling update demo
+  hosts: all
+  become: true
+  tasks:
+    - name: update sever by using package module
+      ansible.builtin.package:
+        name: "*"
+        state: latest
+        update_cache: true
+
+    #- name: ensure RHEL system updated
+     # ansible.builtin.dnf:
+      #  name: "*"
+       # state: latest
+        #update_cache: true
+    
+    #- name: ensure Debian system updated
+      #ansible.builtin.apt:
+       # name: "*"
+        #state: latest
+        #update_cache: true
+    
