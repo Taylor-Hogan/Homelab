@@ -1,0 +1,43 @@
+---
+  - name: edit sudoers.d file
+    hosts: all
+    become: true
+    tasks:
+      
+      - name: Delete a 'test' group # debug
+        ansible.builtin.group: 
+          name: test
+          state: absent
+
+      - name: Check if files exist in sudoersd
+        ansible.builtin.file:
+          path: /etc/sudoers.d/
+          state: directory
+    
+      - name: Check if linuxadmins file exists in sudoers.d
+        ansible.builtin.file:
+          path: /etc/sudoers.d/linuxadmins
+          state: file
+        
+      - name: remove linuxadmins group from sudoers.d
+        ansible.builtin.lineinfile:
+          path: /etc/sudoers.d/linuxadmins
+          state: absent
+          line: '%linuxadmins ALL=(ALL) ALL'
+
+      - name: remove user to file # wil not remove for test reasons
+        ansible.builtin.lineinfile:
+          path: /etc/sudoers.d/linuxadmins
+          state: present
+          line: student ALL=(ALL) ALL
+
+      - name: remove test group to file and or users #debug
+        ansible.builtin.lineinfile:
+          path: /etc/sudoers.d/linuxadmins
+          state: absent
+          line: '%test ALL=(ALL)NOPASSWD: ALL '
+
+      - name: Delete linuxadmins file exists in sudoers.d
+        ansible.builtin.file:
+          path: "/etc/sudoers.d/linuxadmins"
+          state: absent 
