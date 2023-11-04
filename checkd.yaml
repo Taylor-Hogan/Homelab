@@ -1,0 +1,27 @@
+---
+  - name: edit sudoers.d file
+    hosts: all
+    become: true
+    tasks:
+
+      - name: Check if files exist in sudoersd
+        ansible.builtin.file:
+          path: /etc/sudoers.d/
+          state: directory
+    
+      - name: Check if linuxadmins file exists in sudoers.d
+        ansible.builtin.file:
+          path: /etc/sudoers.d/linuxadmins
+          state: file
+        
+      - name: add linuxadmins group to file and or users
+        ansible.builtin.lineinfile:
+          path: /etc/sudoers.d/linuxadmins
+          state: present
+          line: '%linuxadmins ALL=(ALL) ALL'
+
+      - name: add user to file
+        ansible.builtin.lineinfile:
+          path: /etc/sudoers.d/linuxadmins
+          state: present
+          line: student ALL=(ALL) ALL
