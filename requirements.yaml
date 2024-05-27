@@ -1,0 +1,40 @@
+---
+collections:
+# With just the collection name
+#- my_namespace.my_collection
+- ansible.posix
+- ansible.windows
+- community.windows
+- community.libvirt
+- community.vmware
+- community.general
+- fedora.linux_system_roles
+- oasis_roles.system
+- theforeman.foreman
+- theforeman.operations
+- ansible.eda
+- ansible.memsource
+- ansible.netcommon
+- ansible.scm
+- ansible.snmp
+- ansible.security
+- community.network
+- community.general
+- community.crypto
+- community.dns
+- community.aws
+- community.digitalocean
+- community.docker
+- community.elastic
+- community.grafana
+- community.hashi_vault
+- community.healthchecksio
+- community.kubevirt
+- ovirt.ovirt
+- community.libvirt
+- community.mongodb
+- community.mysql
+- community.okd
+- community.postgresql
+- community.zabbix
+
