@@ -1,0 +1,21 @@
+---
+# Template playbook for Linux System Roles
+# https://linux-system-roles.github.io/
+# https://galaxy.ansible.com/linux-system-roles/
+# https://github.com/linux-system-roles/
+
+- hosts: rhel
+  become: yes
+  become_method: sudo
+  remote_user: student
+  become_user: root
+  vars:
+   #enable selinux
+   SELinux_type: targeted
+   SELinux_state: permissive
+#   SELinux_change_running: 1
+ 
+  roles:
+   - linux-system-roles.selinux
+# rhel version
+#   - rhel-system-roles.selinux

@@ -1,0 +1,18 @@
+---
+# Template playbook for Linux System Roles
+# https://linux-system-roles.github.io/
+# https://galaxy.ansible.com/linux-system-roles/
+# https://github.com/linux-system-roles/
+
+- hosts: rhel
+  become: yes
+  become_method: sudo
+  remote_user: student
+  become_user: root
+  vars: 
+    tlog_scope_sssd: all
+    
+  roles:
+   - role: linux-system-roles.tlog
+# rhel version
+#   - role: rhel-system-roles.tlog
