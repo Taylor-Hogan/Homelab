@@ -11,7 +11,7 @@
   become_user: root
   vars: 
    timesync_ntp_servers:
-    - hostname: esoc3.local
+    - hostname: home.local
       pool: yes
       iburst: yes
 
