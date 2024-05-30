@@ -1,0 +1,27 @@
+---
+# Template playbook for Linux System Roles
+# https://linux-system-roles.github.io/
+# https://galaxy.ansible.com/linux-system-roles/
+# https://github.com/linux-system-roles/
+
+- hosts: rhel
+  become: yes
+  become_method: sudo
+  remote_user: student
+  become_user: root
+  vars: 
+   timesync_ntp_servers:
+    - hostname: esoc3.local
+      pool: yes
+      iburst: yes
+
+# if you wnat to varibize the playbok use this instead
+#   timesync_ntp_serves:
+#    - hostname: {{ ntp1 }}
+#      pool: yes
+#      iburst: yes
+
+  roles:
+   - role: linux-system-roles.timesync
+# rhel version
+#   - role: rhel-system-roles.timesync
